@@ -170,7 +170,7 @@ export const Navigation = () => {
     <>
       <Nav $scrolled={scrolled}>
         <NavContainer>
-          <Logo to="/">VirtueNex</Logo>
+          <Logo to="/">VirtueNex Automation</Logo>
 
           <NavLinks $isOpen={mobileMenuOpen}>
             <NavLink to="/" $active={isActive('/')}>

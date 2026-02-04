@@ -9,7 +9,6 @@ import {
   FileText,
   Headphones,
   UserPlus,
-  BarChart3,
 } from 'lucide-react';
 import { CTASection } from '../components/CTASection';
 import { Link } from 'react-router-dom';
@@ -375,29 +374,6 @@ export const Services = () => {
                 <BenefitItem>Candidate communication</BenefitItem>
               </BenefitsList>
               <IdealFor>Ideal for companies hiring frequently</IdealFor>
-              <ContactLink to="/contact">Discuss This Solution</ContactLink>
-            </ServiceCard>
-
-            <ServiceCard
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-            >
-              <ServiceIcon>
-                <BarChart3 size={48} strokeWidth={1.5} />
-              </ServiceIcon>
-              <ServiceTitle>Predictive Analytics</ServiceTitle>
-              <ServiceDescription>
-                Data intelligence that reveals future opportunities, making decisions based on what's coming.
-              </ServiceDescription>
-              <BenefitsList>
-                <BenefitItem>Predictive modeling</BenefitItem>
-                <BenefitItem>Real-time dashboards</BenefitItem>
-                <BenefitItem>Trend identification</BenefitItem>
-                <BenefitItem>Automated reporting</BenefitItem>
-              </BenefitsList>
-              <IdealFor>Ideal for data-driven businesses</IdealFor>
               <ContactLink to="/contact">Discuss This Solution</ContactLink>
             </ServiceCard>
           </ServicesGrid>

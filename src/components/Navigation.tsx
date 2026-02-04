@@ -58,6 +58,7 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
     flex-direction: column;
     justify-content: center;
     gap: ${({ theme }) => theme.spacing[6]};
+    padding: ${({ theme }) => theme.spacing[6]};
     transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform ${({ theme }) => theme.transitions.base};
     border-left: 1px solid ${({ theme }) => theme.colors.border.default};
@@ -165,6 +166,18 @@ export const Navigation = () => {
   useEffect(() => {
     setMobileMenuOpen(false);
   }, [location.pathname]);
+
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
 
   const isActive = (path: string) => location.pathname === path;
 

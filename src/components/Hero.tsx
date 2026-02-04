@@ -11,6 +11,11 @@ const HeroWrapper = styled.section`
   padding: ${({ theme }) => `${theme.spacing[10]} ${theme.spacing[6]}`};
   position: relative;
   overflow: hidden;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    min-height: 100svh; /* Better mobile viewport handling */
+    padding: ${({ theme }) => `${theme.spacing[8]} ${theme.spacing[5]}`};
+  }
 `;
 
 const AnimatedGrid = styled.div`
@@ -117,6 +122,10 @@ const HeroTitle = styled(motion.h1)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.fontSizes['3xl']};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.fontSizes['2xl']};
+  }
 `;
 
 const TypewriterWrapper = styled.span`
@@ -164,6 +173,8 @@ const PrimaryCTA = styled(Link)`
   border: none;
   position: relative;
   overflow: hidden;
+  display: inline-block;
+  text-align: center;
 
   &::before {
     content: '';
@@ -192,7 +203,7 @@ const PrimaryCTA = styled(Link)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    justify-content: center;
+    min-height: 48px; /* Better touch target */
   }
 `;
 
@@ -207,6 +218,8 @@ const SecondaryCTA = styled(Link)`
   color: ${({ theme }) => theme.colors.text.primary};
   position: relative;
   overflow: hidden;
+  display: inline-block;
+  text-align: center;
 
   &::before {
     content: '';
@@ -237,7 +250,7 @@ const SecondaryCTA = styled(Link)`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
     width: 100%;
-    justify-content: center;
+    min-height: 48px; /* Better touch target */
   }
 `;
 

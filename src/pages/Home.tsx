@@ -65,6 +65,10 @@ const SectionTitle = styled.h2`
     font-size: ${({ theme }) => theme.fontSizes['4xl']};
     margin-bottom: ${({ theme }) => theme.spacing[8]};
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.sm}) {
+    font-size: ${({ theme }) => theme.fontSizes['3xl']};
+  }
 `;
 
 const ValueGrid = styled.div`

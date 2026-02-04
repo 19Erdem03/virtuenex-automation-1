@@ -1,7 +1,7 @@
 import { useState, FormEvent } from 'react';
 import styled from 'styled-components';
 import { motion } from 'framer-motion';
-import { Mail, Clock, CheckCircle } from 'lucide-react';
+import { Clock, CheckCircle } from 'lucide-react';
 
 const PageWrapper = styled.div`
   padding-top: 80px;
@@ -496,13 +496,9 @@ export const Contact = () => {
             <SidebarCard>
               <SidebarTitle>Contact Information</SidebarTitle>
               <SidebarText>
-                Prefer to reach out directly? We're here to help.
+                Fill out the form and we'll get back to you within 24 hours with a custom strategy for your business.
               </SidebarText>
               <ContactInfo>
-                <Mail size={20} />
-                erdem@virtuenex-automation.com
-              </ContactInfo>
-              <ContactInfo style={{ marginTop: '12px' }}>
                 <Clock size={20} />
                 Response within 24 hours
               </ContactInfo>

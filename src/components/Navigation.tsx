@@ -61,6 +61,7 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
     transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform ${({ theme }) => theme.transitions.base};
     border-left: 1px solid ${({ theme }) => theme.colors.border.default};
+    z-index: 1002; /* Above navbar */
   }
 `;
 
@@ -121,7 +122,8 @@ const CTAButton = styled(Link)`
 const MenuButton = styled.button`
   display: none;
   color: ${({ theme }) => theme.colors.text.primary};
-  z-index: 1001;
+  z-index: 1003; /* Above mobile menu */
+  position: relative;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     display: block;

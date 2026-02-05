@@ -48,22 +48,23 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     position: fixed;
-    top: 0;
+    top: 60px;
+    left: 0;
     right: 0;
-    bottom: 0;
     width: 100%;
-    max-width: 400px;
     background-color: rgba(0, 0, 0, 0.98);
     backdrop-filter: blur(10px);
     flex-direction: column;
-    justify-content: center;
+    justify-content: flex-start;
     gap: ${({ theme }) => theme.spacing[6]};
     padding: ${({ theme }) => theme.spacing[6]};
+    padding-top: ${({ theme }) => theme.spacing[8]};
     overflow-y: auto;
     overflow-x: hidden;
-    transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
+    max-height: calc(100vh - 60px);
+    transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-100%)')};
     transition: transform ${({ theme }) => theme.transitions.base};
-    border-left: 1px solid ${({ theme }) => theme.colors.border.default};
+    border-bottom: 1px solid ${({ theme }) => theme.colors.border.default};
     z-index: 1002; /* Above navbar */
   }
 `;

@@ -47,24 +47,7 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    position: fixed;
-    top: 60px;
-    left: 0;
-    right: 0;
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.98);
-    backdrop-filter: blur(10px);
-    flex-direction: column;
-    justify-content: center;
-    gap: ${({ theme }) => theme.spacing[6]};
-    padding: ${({ theme }) => theme.spacing[6]};
-    overflow-y: auto;
-    overflow-x: hidden;
-    max-height: calc(100vh - 60px);
-    transform: ${({ $isOpen }) => ($isOpen ? 'translateY(0)' : 'translateY(-100%)')};
-    transition: transform ${({ theme }) => theme.transitions.base};
-    border-bottom: 1px solid ${({ theme }) => theme.colors.border.default};
-    z-index: 1002; /* Above navbar */
+    gap: ${({ theme }) => theme.spacing[4]};
   }
 `;
 
@@ -122,19 +105,16 @@ const CTAButton = styled(Link)`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: none;
+    padding: ${({ theme }) => `${theme.spacing[2]} ${theme.spacing[4]}`};
+    font-size: ${({ theme }) => theme.fontSizes.sm};
   }
 `;
 
 const MenuButton = styled.button`
   display: none;
   color: ${({ theme }) => theme.colors.text.primary};
-  z-index: 1003; /* Above mobile menu */
+  z-index: 1003;
   position: relative;
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    display: block;
-  }
 `;
 
 const Overlay = styled.div<{ $isOpen: boolean }>`

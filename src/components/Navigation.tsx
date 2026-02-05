@@ -59,6 +59,8 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
     justify-content: center;
     gap: ${({ theme }) => theme.spacing[6]};
     padding: ${({ theme }) => theme.spacing[6]};
+    overflow-y: auto;
+    overflow-x: hidden;
     transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
     transition: transform ${({ theme }) => theme.transitions.base};
     border-left: 1px solid ${({ theme }) => theme.colors.border.default};

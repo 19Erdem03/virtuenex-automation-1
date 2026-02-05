@@ -120,6 +120,10 @@ const CTAButton = styled(Link)`
   &:active {
     transform: translateY(0);
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: none;
+  }
 `;
 
 const MenuButton = styled.button`

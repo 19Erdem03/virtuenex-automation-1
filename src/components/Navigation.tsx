@@ -55,10 +55,9 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
     background-color: rgba(0, 0, 0, 0.98);
     backdrop-filter: blur(10px);
     flex-direction: column;
-    justify-content: flex-start;
+    justify-content: center;
     gap: ${({ theme }) => theme.spacing[6]};
     padding: ${({ theme }) => theme.spacing[6]};
-    padding-top: ${({ theme }) => theme.spacing[8]};
     overflow-y: auto;
     overflow-x: hidden;
     max-height: calc(100vh - 60px);

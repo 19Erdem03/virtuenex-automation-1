@@ -1,5 +1,8 @@
+'use client';
+
 import { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import Link from 'next/link';
+import { usePathname } from 'next/navigation';
 import styled from 'styled-components';
 import { Menu, X } from 'lucide-react';
 
@@ -26,8 +29,7 @@ const NavContainer = styled.div`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[4]}`};
-    gap: ${({ theme }) => theme.spacing[2]};
+    padding: ${({ theme }) => `${theme.spacing[4]} ${theme.spacing[5]}`};
   }
 `;
 
@@ -40,13 +42,6 @@ const Logo = styled(Link)`
   &:hover {
     opacity: 0.8;
   }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.fontSizes.sm};
-    white-space: nowrap;
-    width: 20px;
-    overflow: hidden;
-  }
 `;
 
 const NavLinks = styled.div<{ $isOpen: boolean }>`
@@ -55,7 +50,21 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    gap: ${({ theme }) => theme.spacing[2]};
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    width: 100%;
+    max-width: 400px;
+    background-color: rgba(0, 0, 0, 0.98);
+    backdrop-filter: blur(10px);
+    flex-direction: column;
+    justify-content: center;
+    gap: ${({ theme }) => theme.spacing[6]};
+    transform: ${({ $isOpen }) => ($isOpen ? 'translateX(0)' : 'translateX(100%)')};
+    transition: transform ${({ theme }) => theme.transitions.base};
+    border-left: 1px solid ${({ theme }) => theme.colors.border.default};
+    z-index: 1002;
   }
 `;
 
@@ -88,7 +97,7 @@ const NavLink = styled(Link)<{ $active: boolean }>`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.fontSizes.sm};
+    font-size: ${({ theme }) => theme.fontSizes.xl};
   }
 `;
 
@@ -111,11 +120,6 @@ const CTAButton = styled(Link)`
   &:active {
     transform: translateY(0);
   }
-
-  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => `${theme.spacing[2]} ${theme.spacing[3]}`};
-    font-size: ${({ theme }) => theme.fontSizes.xs};
-  }
 `;
 
 const MenuButton = styled.button`
@@ -123,6 +127,10 @@ const MenuButton = styled.button`
   color: ${({ theme }) => theme.colors.text.primary};
   z-index: 1003;
   position: relative;
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    display: block;
+  }
 `;
 
 const Overlay = styled.div<{ $isOpen: boolean }>`
@@ -143,10 +151,10 @@ const Overlay = styled.div<{ $isOpen: boolean }>`
   }
 `;
 
-export const Navigation = () => {
+export function Navigation() {
   const [scrolled, setScrolled] = useState(false);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const location = useLocation();
+  const pathname = usePathname();
 
   useEffect(() => {
     const handleScroll = () => {
@@ -159,36 +167,24 @@ export const Navigation = () => {
 
   useEffect(() => {
     setMobileMenuOpen(false);
-  }, [location.pathname]);
+  }, [pathname]);
 
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [mobileMenuOpen]);
-
-  const isActive = (path: string) => location.pathname === path;
+  const isActive = (path: string) => pathname === path;
 
   return (
     <>
       <Nav $scrolled={scrolled}>
         <NavContainer>
-          <Logo to="/">VirtueNex Automation</Logo>
+          <Logo href="/">VirtueNex Automation</Logo>
 
           <NavLinks $isOpen={mobileMenuOpen}>
-            <NavLink to="/" $active={isActive('/')}>
+            <NavLink href="/" $active={isActive('/')}>
               Home
             </NavLink>
-            <NavLink to="/services" $active={isActive('/services')}>
+            <NavLink href="/services" $active={isActive('/services')}>
               Solutions
             </NavLink>
-            <CTAButton to="/contact">Get Started</CTAButton>
+            <CTAButton href="/contact">Get Started</CTAButton>
           </NavLinks>
 
           <MenuButton onClick={() => setMobileMenuOpen(!mobileMenuOpen)}>
@@ -199,4 +195,4 @@ export const Navigation = () => {
       <Overlay $isOpen={mobileMenuOpen} onClick={() => setMobileMenuOpen(false)} />
     </>
   );
-};
+}

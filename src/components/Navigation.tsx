@@ -26,7 +26,8 @@ const NavContainer = styled.div`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => `${theme.spacing[4]} ${theme.spacing[5]}`};
+    padding: ${({ theme }) => `${theme.spacing[3]} ${theme.spacing[4]}`};
+    gap: ${({ theme }) => theme.spacing[2]};
   }
 `;
 
@@ -41,7 +42,8 @@ const Logo = styled(Link)`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.fontSizes.base};
+    font-size: ${({ theme }) => theme.fontSizes.sm};
+    white-space: nowrap;
   }
 `;
 
@@ -51,7 +53,7 @@ const NavLinks = styled.div<{ $isOpen: boolean }>`
   align-items: center;
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    gap: ${({ theme }) => theme.spacing[4]};
+    gap: ${({ theme }) => theme.spacing[2]};
   }
 `;
 

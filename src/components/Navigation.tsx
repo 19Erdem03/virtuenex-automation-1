@@ -39,6 +39,10 @@ const Logo = styled(Link)`
   &:hover {
     opacity: 0.8;
   }
+
+  @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
+    font-size: ${({ theme }) => theme.fontSizes.base};
+  }
 `;
 
 const NavLinks = styled.div<{ $isOpen: boolean }>`
@@ -80,7 +84,7 @@ const NavLink = styled(Link)<{ $active: boolean }>`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    font-size: ${({ theme }) => theme.fontSizes.xl};
+    font-size: ${({ theme }) => theme.fontSizes.sm};
   }
 `;
 
@@ -105,8 +109,8 @@ const CTAButton = styled(Link)`
   }
 
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
-    padding: ${({ theme }) => `${theme.spacing[2]} ${theme.spacing[4]}`};
-    font-size: ${({ theme }) => theme.fontSizes.sm};
+    padding: ${({ theme }) => `${theme.spacing[2]} ${theme.spacing[3]}`};
+    font-size: ${({ theme }) => theme.fontSizes.xs};
   }
 `;
 

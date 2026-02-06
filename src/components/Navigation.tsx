@@ -44,6 +44,8 @@ const Logo = styled(Link)`
   @media (max-width: ${({ theme }) => theme.breakpoints.md}) {
     font-size: ${({ theme }) => theme.fontSizes.sm};
     white-space: nowrap;
+    width: 20px;
+    overflow: hidden;
   }
 `;
 
